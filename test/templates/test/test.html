@@ -1,3 +1,15 @@
 
 {% extends "base_user.html" %}
+{%  block sidebar %}
+    {% include "siderBar_main_user.html" %} 
+{% endblock%} 
+{% block contentArea %}
+    <div class="bg-white">{% lorem 100 %}</div>
+    <div class="bg-white">dasd</div>
+    <div class="bg-white">dasd</div>
+    <div class="bg-white">dasd</div>
+{% endblock contentArea %} 
 
+{% block floatingArea %}
+    {% include "float_write_button_user.html" %} 
+{% endblock floatingArea %} 
