@@ -1,0 +1,18 @@
+{% extends "base_user.html" %}
+{%  block sidebar %}
+    {% include "siderBar_main_user.html" %} 
+{% endblock%} 
+{% block contentArea %}
+<div class="ml-5 d-flex align-items-center justify-content-center row">
+    {% if posts%}
+        {% for post  in  posts%}
+            {% include "./post_fragment.html" %}
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock contentArea %} 
+    
+    
+{% block floatingArea %}
+    {% include "float_write_button_user.html" %} 
+{% endblock floatingArea %} 

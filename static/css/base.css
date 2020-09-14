@@ -70,3 +70,10 @@ html, body{
 #sidebar-active{
     color: #ffcc33;
 }
+#post_content{
+    line-height: 2rem;
+}
+.post_card{
+    background-color: #e0e0e0;
+    border-radius: 0.5rem;
+}
