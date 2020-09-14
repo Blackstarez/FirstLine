@@ -13,7 +13,7 @@ def login(request):
     if request.method == 'POST':
         loginInfo = LoginForm(request.POST)
         try:
-            member = MemberInfo.objects.get(id=loginInfo['id'].value(),pw=loginInfo['pw'].value())
+            member = MemberInfo.object.get(id=loginInfo['id'].value(),pw=loginInfo['pw'].value())
             request.session['_auth_user_id'] = loginInfo['id'].value()
             request.session['power'] = member.classification
             return redirect(resolve_url('index'))
@@ -44,7 +44,7 @@ def signup(request):
                     member = MemberInfo(id=form.data['id'],pw=form.data['pw'],name=form.data['name'],
                     age=form.data['age'],sex=form.data['sex'],email=form.data['email'],
                     phoneNumber=form.data['phoneNumber'],address=form.data['address'],offerInfoAgree=form.data['offerInfoAgree'],
-                    offerInfoAgreeDay='00000000000000',creationDate=datetime.today().strftime("%Y%m%d%H%M%S"))
+                    offerInfoAgreeDay='00000000000000',creationDate=datetime.today().strftime("%Y%m%d%H%M%S"),classification=0)
                 member.save()
                 return redirect(resolve_url('login'))
             else: #검증실패 시

@@ -24,7 +24,7 @@
 </div>
 {% endblock sidebar %} 
 {% block contentArea %}
-<div>
+<div style="background-color: antiquewhite; min-height: 500px;" >
     <h2><b>로그인</b> <b style="font-weight:normal; font-size:15px">Sign Up</b></h2>
     <hr/>
     <div style="max-width: 30%;">
@@ -45,3 +45,17 @@
     </div>    
 </div>
 {% endblock contentArea %}
+
+{% block script %}
+<script>
+  function goSignup()
+  {
+      location.href = "{% url 'signup' %}"
+  }
+</script>
+{% if alert %}
+  <script>
+      alert("로그인 실패\n아이디 또는 비밀번호를 확인해주세요.")
+  </script>
+{% endif %}
+{% endblock script %}
