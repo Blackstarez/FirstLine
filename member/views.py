@@ -20,7 +20,14 @@ def login(request):
         except ObjectDoesNotExist:
             return render(request, "alert_and_redirect.html", { 'message':"로그인에 실패했습니다", 'url' : "/"})
         
-        
+def get_memberInfo_model(id):
+    try:
+        member = MemberInfo.object.get(id=id)
+        return member
+    except ObjectDoesNotExist:
+        return None
+    return None
+
     
 
 

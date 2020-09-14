@@ -9,13 +9,13 @@
     <div id ="post_keyword" style = "margin-bottom: 7%; padding-right: 10%">
         <h3 id ="post_keyword_input" style="color:beige; text-align: center;">Today Keyword : </h3>
     </div>
-    <form method="POST">
+    <form method="POST" id="post_form">
         {% csrf_token %}
         <div id ="post_name" style="width: 90%" class="input-group mb-3">
             <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">제목</span>
             </div>
-            <input type="text"id="title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" style="color: black;">
+            <input type="text" name="title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" style="color: black;">
         </div>
     
         <div id="content" style=  "margin-top: 4%; width: 90%; background-color: white">
@@ -25,7 +25,7 @@
             //]]>
             </script>
             
-            <textarea name="post_body_input" style="width: 100%; height: 600px;"></textarea>
+            <textarea form="post_form" name="content" style="width: 100%; height: 600px;"></textarea>
         </div>
         <button id = "post_addBtn" style="position: absolute; top: 30%; right: 2%;" type="submit" class="btn btn-warning">발행</button>
     </form>
