@@ -14,7 +14,7 @@ class MemberInfo(models.Model):
     offerInfoAgree = models.IntegerField(max_length = 1) # 1: 동의  0: 비동의
     offerInfoAgreeDay = models.CharField(max_length = 14)# 년월일시분초  20201116232211
     creationDate = models.CharField(max_length =14)      # 년월일시분초
-    classification = models.IntegerField(max_length = 1) # 관리자 회원 구분
+    classification = models.IntegerField(max_length = 1, null=True) # 관리자 회원 구분
 
 def __str__(self):
     return self.id

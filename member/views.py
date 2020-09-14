@@ -13,22 +13,22 @@ def login(request):
     if request.method == 'POST':
         loginInfo = LoginForm(request.POST)
         try:
-            member = MemberInfo.object.get(id=loginInfo['id'].value(),pw=loginInfo['pw'].value()+"1")
+            member = MemberInfo.object.get(id=loginInfo['id'].value(),pw=loginInfo['pw'].value())
             request.session['auth_user_id'] = loginInfo['id'].value()
             request.session['power'] = member.classification
-            print("dasdsa")
             return redirect("/")
         except ObjectDoesNotExist:
-            loginInfo = LoginForm()
-            context = {
-                'loginInfo' : loginInfo,
-                'alert' : True
-            }
-    else:
-        loginInfo = LoginForm()
-        context = {'loginInfo' : loginInfo,'alert' : False}
+            return render(request, "alert_and_redirect.html", { 'message':"로그인에 실패했습니다", 'url' : "/"})
         
-    return render(request, 'member/login.html',context)
+def get_memberInfo_model(id):
+    try:
+        member = MemberInfo.object.get(id=id)
+        return member
+    except ObjectDoesNotExist:
+        return None
+    return None
+
+    
 
 
 # 회원가입
@@ -36,6 +36,7 @@ def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
+            print("dasdsa")
             if isValidSignUp(form):
                 if form.data['offerInfoAgree'] == 1:
                     member = MemberInfo(id=form.data['id'],pw=form.data['pw'],name=form.data['name'],
@@ -47,13 +48,15 @@ def signup(request):
                     age=form.data['age'],sex=form.data['sex'],email=form.data['email'],
                     phoneNumber=form.data['phoneNumber'],address=form.data['address'],offerInfoAgree=form.data['offerInfoAgree'],
                     offerInfoAgreeDay='00000000000000',creationDate=datetime.today().strftime("%Y%m%d%H%M%S"))
+                request.session['auth_user_id'] = member.id
+                request.session['power'] = member.classification
                 member.save()
-                return redirect(resolve_url('login'))
-            else: #검증실패 시
-                return render(request,'member/signup.html',{'signupInfo':form,'error':True})
-    else:
-        memberInfo = SignupForm()
-        return render(request, 'member/signup.html',{'signupInfo':memberInfo})
+            else:
+                return render(request, "alert_and_redirect.html", { 'message':"회원가입에 실패했습니다. 입력정보를 확인해주세요", 'url' : "/"})
+        else:
+            return render(request, "alert_and_redirect.html", { 'message':"회원가입에 실패했습니다. 입력정보를 확인해주세요", 'url' : "/"})
+    
+    return render(request, "alert_and_redirect.html", { 'message':"축하드립니다 성공적으로 가입되었습니다", 'url' : "/"})
 
 
 
@@ -70,4 +73,4 @@ def isValidSignUp(memberInfo):
 def logout(request):
     del request.session['auth_user_id']
     del request.session['power']
-    return redirect("/post/all")
+    return redirect("/")
