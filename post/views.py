@@ -15,3 +15,7 @@ def addPostView(request):
             form = AddPostForm()     
             return render(request, 'post/addPostView.html', {'form': form, 'error' : True})
     return render(request, 'post/addPostView.html')
+
+def read_all(request):
+    posts = Post.object.all()
+    return render(request, 'post/read_all.html', {'posts' : posts})
