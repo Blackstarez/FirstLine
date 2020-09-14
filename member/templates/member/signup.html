@@ -1,0 +1,46 @@
+{% extends "base_user.html" %}
+{% block sidebar %}
+<div class="sidebar w-100">
+    <nav class="sidebar-nav w-100">
+      <ul class="nav w-100">
+        <li class="nav-item w-100 mb-5">
+          <a class="nav-link text-white btn"  href="#">
+             <i class="nav-icon cui-speedometer"></i> <p class="h3 menu_item">메인</p>
+          </a>
+        </li>
+        </li>
+              <li class="nav-item w-100 mb-5">
+          <a class="nav-link text-white btn" href="{% url 'login' %}">
+             <i class="nav-icon cui-speedometer"></i> <p class="h3 menu_item" >로그인</p>
+          </a>
+        </li>
+        <li class="nav-item w-100 mb-5">
+          <a class="nav-link text-white btn" href="{% url 'signup' %}">
+             <i class="nav-icon cui-speedometer sidebar-active"></i> <p class="h3 menu_item" >회원가입</p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+</div>
+{% endblock sidebar %} 
+{% block contentArea %}
+<h2><b>회원 가입</b> <b style="font-weight:normal; font-size:15px">Sign Up</b></h2>
+    <hr/>
+    <div style="max-width: 30%;">
+    {% if signupInfo %}
+        <form accept-charset = "utf-8" method = "POST">
+            <div>
+                {% csrf_token %}
+                {{ signupInfo }}
+                <div>
+                    <div class="col-12">
+                        <button type="submit" id="action" class="btn-dark">회원가입</button>
+                        <button class="btn-dark" style="float:right;" onclick="history.back()">취소</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    {% endif %}
+    </div>    
+</div>
+{% endblock contentArea %}

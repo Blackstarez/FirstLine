@@ -31,7 +31,7 @@ def login(request):
 
 # 회원가입
 def signup(request):
-    if request.methode == 'POST':
+    if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
             if isValidSignUp(form):
