@@ -1,0 +1,36 @@
+{% extends "base_user.html" %}
+{% block sidebar %}
+<div class="sidebar w-100">
+  <nav class="sidebar-nav w-100">
+    <ul class="nav w-100">
+      <li class="nav-item w-100 mb-5">
+        <a class="nav-link text-white btn"  href="#">
+           <i class="nav-icon cui-speedometer"></i> <p class="h3 menu_item">메인</p>
+        </a>
+      </li>
+      </li>
+            <li class="nav-item w-100 mb-5">
+        <a class="nav-link text-white btn" href="{% url 'login' %}">
+           <i class="nav-icon cui-speedometer sidebar-active"></i> <p class="h3 menu_item" >내 정보 확인</p>
+        </a>
+      </li>
+      </li>
+            <li class="nav-item w-100 mb-5">
+        <a class="nav-link text-white btn" href="{% url 'login' %}">
+           <i class="nav-icon cui-speedometer"></i> <p class="h3 menu_item" >내 정보 수정</p>
+        </a>
+      </li>
+      <li class="nav-item w-100 mb-5">
+        <a class="nav-link text-white btn" href="{% url 'signup' %}">
+           <i class="nav-icon cui-speedometer "></i> <p class="h3 menu_item" >내 온도그래프 확인</p>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+{% endblock sidebar %} 
+{% block contentArea %}
+<div style="background-color: antiquewhite;min-height: 500px;" >
+
+</div>
+{% endblock contentArea %}

@@ -66,6 +66,10 @@ html, body{
     background-color: transparent;
     border-width: 0;
 }
+
+#sidebar-active{
+    color: #ffcc33;
+}
 #post_content{
     line-height: 2rem;
 }
