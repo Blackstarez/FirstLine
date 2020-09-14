@@ -73,3 +73,10 @@ html, body{
     background-color: #e0e0e0;
     border-radius: 0.5rem;
 }
+#logout{
+    background-image: url("../images/logout.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 2rem;
+    height: 2rem;
+}

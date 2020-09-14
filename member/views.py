@@ -13,10 +13,11 @@ def login(request):
     if request.method == 'POST':
         loginInfo = LoginForm(request.POST)
         try:
-            member = MemberInfo.objects.get(id=loginInfo['id'].value(),pw=loginInfo['pw'].value())
-            request.session['_auth_user_id'] = loginInfo['id'].value()
+            member = MemberInfo.object.get(id=loginInfo['id'].value(),pw=loginInfo['pw'].value()+"1")
+            request.session['auth_user_id'] = loginInfo['id'].value()
             request.session['power'] = member.classification
-            return redirect(resolve_url('index'))
+            print("dasdsa")
+            return redirect("/")
         except ObjectDoesNotExist:
             loginInfo = LoginForm()
             context = {
@@ -26,6 +27,7 @@ def login(request):
     else:
         loginInfo = LoginForm()
         context = {'loginInfo' : loginInfo,'alert' : False}
+        
     return render(request, 'member/login.html',context)
 
 
@@ -64,3 +66,8 @@ def isValidSignUp(memberInfo):
             return True
         else: return False
     else: return False
+
+def logout(request):
+    del request.session['auth_user_id']
+    del request.session['power']
+    return redirect("/post/all")
