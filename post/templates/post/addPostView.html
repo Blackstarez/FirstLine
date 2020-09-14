@@ -1,0 +1,30 @@
+{% extends "base_user.html" %}
+
+{% block contentArea %}
+
+    <div id ="post_keyword" style = "margin-bottom: 7%; padding-right: 10%">
+        <h3 id ="post_keyword_input" style="color:beige; text-align: center;">Today Keyword : </h3>
+    </div>
+    <div id ="post_name" style="width: 90%" class="input-group mb-3">
+        <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">제목</span>
+        </div>
+        <input id="post_name_input" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    </div>
+
+    <div id="post_body" style=  "margin-top: 4%; width: 90%; background-color: white">
+        <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> <script type="text/javascript">
+    //<![CDATA[
+            bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+        //]]>
+        </script>
+        
+        <textarea name="post_body_input" style="width: 100%; height: 600px;"></textarea>
+    </div>
+
+    <button id = "post_addBtn" style=" margin: 5%;" type="button" class="btn btn-warning">발행</button>
+    
+{% endblock contentArea %} 
+
+{% block floatingArea %}
+{% endblock floatingArea %} 
