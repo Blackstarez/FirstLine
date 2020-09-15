@@ -25,7 +25,7 @@ SECRET_KEY = '%(utmotq@85et-9y2i7y0)(%*%dqm#kvp&xqz_t4s67mzr8yna'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["djh20.iptime.org"]
 
 
 # Application definition
