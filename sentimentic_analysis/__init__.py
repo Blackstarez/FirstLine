@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 from . import bert_model
@@ -59,3 +60,5 @@ model2.load_state_dict(torch.load("bert_model/saved_P_NU_ep_20.pt")) ## P_NU
 model1.eval()
 model2.eval()
 
+=======
+>>>>>>> 7c2286ac2c86279da5ae8777aa1dcbc70a49610d

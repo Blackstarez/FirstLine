@@ -1,2 +1,6 @@
 *.pyc
+<<<<<<< HEAD
 *pt
+=======
+*.cpython-37
+>>>>>>> 7c2286ac2c86279da5ae8777aa1dcbc70a49610d
