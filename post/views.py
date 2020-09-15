@@ -9,17 +9,20 @@ from .forms import AddPostForm
 
 import sys
 sys.path.append('../member/')
+sys.path.append('../FirstLine/')
 from member import views as MemberView
-# Create your views here.
+from FirstLine import init_analysis_model as SentimentAnalysisModel
+# Create your viewinit_analysis_model here.
 
 def addPostView(request):
     if request.method == 'POST':
         form = AddPostForm(request.POST)
         memberInfo = MemberView.get_memberInfo_model(request.session['auth_user_id'])
         if form.is_valid():
-            post = Post(title = form.data['title'], content = form.data['content'], user_id = memberInfo)
+            sentiment_analyszer = SentimentAnalysisModel.SentimentAnalyszer.get_instance()
+            prob_n, prob_p, prob_dp, temperature = sentiment_analyszer.get_analysis_result(str(form.data['content']))
+            post = Post(title = form.data['title'], content = form.data['content'], user_id = memberInfo, prob_p=prob_p,prob_dp=prob_dp,prob_n=prob_n,temperature=temperature)
             post.save()
-            #sentimenticAnalysis('글번호 넘겨주세요')
             return render(request, 'alert_and_redirect.html', {'message' : "성공적으로 등록되었습니다", 'url' : "/"})
         else :   
             form = AddPostForm()     

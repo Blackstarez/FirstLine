@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from . import init_analysis_model as SentimentAnalysisModel
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,3 +24,5 @@ urlpatterns = [
     path('post/', include('post.urls')),
     path('', include('post.urls')),
 ]
+
+SentimentAnalysisModel.SentimentAnalyszer.get_instance()

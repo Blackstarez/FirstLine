@@ -1,3 +1,5 @@
+
+
 from . import bert_model
 import torch
 from kobert.pytorch_kobert import get_pytorch_kobert_model
@@ -39,7 +41,6 @@ class BERTClassifier(nn.Module):
         if self.dr_rate:
             out = self.dropout(pooler)
         return self.classifier(out)
-
 
 
 bertmodel1, vocab1 = get_pytorch_kobert_model()
