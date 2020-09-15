@@ -35,3 +35,11 @@ def read_all(request):
 def read_hot(request):
     posts = Post.objects.filter(temperature_gte = 38.0)
     return render(request, 'post/read_hot.html', {'posts' : posts})
+
+def read_warm(request):
+    posts = Post.objects.filter(temperature_range = (33.0 , 38.0))
+    return render(request, 'post/read_hot.html', {'posts' : posts})
+
+def read_cold(request):
+    posts = Post.objects.filter(temperature_lte = 33.0)
+    return render(request, 'post/read_hot.html', {'posts' : posts})
