@@ -2,8 +2,8 @@ from django.shortcuts import render
 
 # 잘 되게 해주세요
 import os, sys
-sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname("../post"))))
-from .models import Post
+sys.path.append('../post/')
+from post.models import Post
 from . import bert_model
 import torch
 from torch import nn
@@ -139,9 +139,11 @@ def sentimenticAnalysis(post):
                     #그렇지 아니한 경우
                     postSementic[1] += prob1_list[1]
                     postSementic[2] += prob1_list[2]
+        
+        temp = ((28*postSementic[0])+(36.5*postSementic[2])+(42*postSementic[1]))/(3*len(sentences))
         newPost = Post(title=post.data['title'],content=post.data['content'], user_id=post.data['user_id'],
                     prob_p= postSementic[1]/len(sentences), prob_dp= postSementic[0]/len(sentences),prob_n= postSementic[2]/len(sentences),
-                    temperature=((28*postSementic[0]/len(sentences))+(36.5*postSementic[2]/len(sentences))+(42*postSementic[1]/len(sentences)))/3)
+                    temperature=temp)
         newPost.save()
         return True
     except :
