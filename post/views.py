@@ -29,5 +29,9 @@ def addPostView(request):
     return render(request, 'post/addPostView.html')
 
 def read_all(request):
-    posts = Post.object.all()
+    posts = Post.objects.all()
     return render(request, 'post/read_all.html', {'posts' : posts})
+
+def read_hot(request):
+    posts = Post.objects.filter(temperature_gte = 38.0)
+    return render(request, 'post/read_hot.html', {'posts' : posts})

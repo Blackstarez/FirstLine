@@ -2,7 +2,7 @@ from django.db import models
 from member.models import MemberInfo
 # Create your models here.
 class Post(models.Model):
-    object = models.Manager()
+    objects = models.Manager()
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length = 20, null=False)
     content = models.TextField(max_length = 1000, null=False)
