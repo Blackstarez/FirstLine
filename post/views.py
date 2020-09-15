@@ -4,8 +4,8 @@ from .forms import AddPostForm
 
 # 잘 되게 해주세요
 import os, sys
-sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname("../sementic_analysis"))))
-from .views import sentimenticAnalysis
+sys.path.append('../sentimentic_analysis/')
+from sentimentic_analysis import views as SentimenticView
 
 import sys
 sys.path.append('../member/')
@@ -19,7 +19,7 @@ def addPostView(request):
         if form.is_valid():
             post = Post(title = form.data['title'], content = form.data['content'], user_id = memberInfo)
 
-            if sentimenticAnalysis(post): # 감성분석 성공이든 실패든 등록하게 되는 함수입니다.
+            if SentimenticView.sentimenticAnalysis(post): # 감성분석 성공이든 실패든 등록하게 되는 함수입니다.
                 print('등록성공')
             else: print('등록실패')
             return render(request, 'alert_and_redirect.html', {'message' : "성공적으로 등록되었습니다", 'url' : "/"})

@@ -2,8 +2,8 @@ from django.shortcuts import render
 
 # 잘 되게 해주세요
 import os, sys
-sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname("../post"))))
-from .models import Post
+sys.path.append('../post/')
+from post.models import Post
 from . import bert_model
 import torch
 from torch import nn
